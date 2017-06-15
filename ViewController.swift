@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let columnChart = LLColumnChart.init(frame: CGRect(x:0, y:64, width:self.view.frame.width, height:400))
-        columnChart.valueArr = [[100,97],[224,310],[245,329]]
+        columnChart.valueArr = [[100,224,356,290],[97,240,329,289]]
+            //[[100,97],[224,310],[245,329]]
         columnChart.columnBgColorArr = [UIColor.green,UIColor.red]
         columnChart.chartOrigin = CGPoint(x:30, y:30)
         columnChart.xShowInfoText = ["9月","10月","11月"]
