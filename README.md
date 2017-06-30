@@ -20,6 +20,8 @@ columnChart.showAnimation()
 
 self.view.addSubview(columnChart)
 
+![Image text](https://github.com/liliyao/LLChart/raw/master/imageFolder/colum.png)
+
 折线图
 
 let lineChart = LLLineChart.init(frame: CGRect(x:0, y:64, width:kScreenW, height:400))
@@ -42,10 +44,18 @@ lineChart.showAnimation()
 
 self.view.addSubview(lineChart)
 
+![Image text](https://github.com/liliyao/LLChart/raw/master/imageFolder/line.png)
+
 
 饼图
 let pieChart = LLPieChart.init(frame: CGRect(x:0, y:64, width:kScreenW, height:kScreenH))
+
 pieChart.dataArr = [168,100,224,356,290]
+
 pieChart.pieShowStrArr = ["1月用气量:","2月用气量:","3月用气量:","4月用气量:","5月用气量:"]
+
 pieChart.showAnimation()
+
 self.view.addSubview(pieChart)
+
+![Image text](https://github.com/liliyao/LLChart/raw/master/imageFolder/pie.png)
