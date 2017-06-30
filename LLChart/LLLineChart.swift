@@ -126,6 +126,11 @@ class LLLineChart: LLChart {
                 //画点
                 let point = CGPoint(x:chartOrigin.x + pointSpace * CGFloat(j + 1), y:arr[j])
                 drawArc(bezierPath:pointPath, center:point, fillColor:pointColor)
+                let textlayer = drawText(text:"\(arr[j])", textColor:pointColor, textFont:12 * ScaleW, backGroundColor: UIColor.clear)
+                textlayer.frame = CGRect(x:chartOrigin.x + pointSpace * CGFloat(j + 1) - 30*ScaleW, y:arr[j] - 15, width:60*ScaleW, height:15)
+                textlayer.alignmentMode = "center"
+                self.layer.addSublayer(textlayer)
+                layerArr.append(textlayer)
                 
                 //画线
                 if j == 0{
