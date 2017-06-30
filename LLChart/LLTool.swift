@@ -75,7 +75,6 @@ func drawText(text:String,textColor:UIColor,textFont:CGFloat,backGroundColor:UIC
     textLayer.font = font
     textLayer.string = text
     textLayer.foregroundColor = textColor.cgColor
-    textLayer.backgroundColor = backGroundColor.cgColor
     return textLayer
 }
 
@@ -91,6 +90,37 @@ func drawArc(bezierPath:UIBezierPath,center:CGPoint,fillColor:UIColor){
     bezierPath.addArc(withCenter:center, radius:2.5, startAngle: 0.0, endAngle:CGFloat(Double.pi * 2), clockwise:true)
 }
 
+
+
+/// 画文字
+///
+/// - Parameters:
+///   - context: 图形上下文
+///   - text: 文字
+///   - rt: 大小
+///   - textColor: 文字颜色
+///   - textFont: 文字大小
+func drawText(context:CGContext,text:String,rt:CGRect,textColor:UIColor,textFont:CGFloat){
+    (text as NSString).draw(in:rt, withAttributes:[NSFontAttributeName:UIFont.systemFont(ofSize:textFont),NSForegroundColorAttributeName:textColor])
+    textColor.setFill()
+    context.drawPath(using: CGPathDrawingMode.fill)
+}
+
+
+
+/// 画矩形
+///
+/// - Parameters:
+///   - context: 图像上下文
+///   - color: 颜色
+///   - rt: 大小
+func drawQuart(context:CGContext,color:UIColor,rt:CGRect){
+    context.addRect(rt)
+    context.setStrokeColor(color.cgColor)
+    context.setFillColor(color.cgColor)
+    context.drawPath(using: CGPathDrawingMode.fillStroke)
+}
+
 func getBasicAnimation(keyPath:String,duartion:CFTimeInterval)->CABasicAnimation{
     let basic = CABasicAnimation.init(keyPath:keyPath)
     basic.duration = duartion
@@ -98,8 +128,11 @@ func getBasicAnimation(keyPath:String,duartion:CFTimeInterval)->CABasicAnimation
     basic.toValue = 1
     basic.autoreverses = false
     basic.fillMode = kCAFillModeForwards
+    basic.isRemovedOnCompletion = true
     return basic
 }
+
+
 
 //根据高度计算文字宽度
 func autoLayoutContnetWidthWithHeight(height:CGFloat,font:CGFloat,content:String,lineSpace:CGFloat)-> CGSize{
@@ -112,5 +145,13 @@ func autoLayoutContnetWidthWithHeight(height:CGFloat,font:CGFloat,content:String
     dict.updateValue(paragraphStyle, forKey:NSParagraphStyleAttributeName)
     actualsize = normalText.boundingRect(with: CGSize(width:CGFloat(MAXFLOAT), height:height), options: NSStringDrawingOptions.usesLineFragmentOrigin,attributes:dict, context: nil).size
     return actualsize
+}
+
+//随机获取颜色
+func randomColor()->UIColor{
+   let r =  CGFloat(arc4random_uniform(256)) / 255.0
+   let g =  CGFloat(arc4random_uniform(256)) / 255.0
+   let b =  CGFloat(arc4random_uniform(256)) / 255.0
+   return UIColor(red: CGFloat.init(r), green: CGFloat.init(g), blue: CGFloat.init(b), alpha:1)
 }
 

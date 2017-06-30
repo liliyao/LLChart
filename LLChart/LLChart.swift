@@ -78,10 +78,11 @@ class LLChart: UIScrollView {
     
     //清楚当前视图
     func clear(){
-        for layer:CALayer in layerArr{
+        for layer:CALayer in self.layerArr{
           layer.removeAllAnimations()
           layer.removeFromSuperlayer()
         }
+        self.layer.sublayers?.removeAll()
     }
     
     //画XY轴
