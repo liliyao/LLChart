@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+LLChart/imageFolder/colum.png
     override func viewDidLoad() {
         super.viewDidLoad()
         //柱状图
