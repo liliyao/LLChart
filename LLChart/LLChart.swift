@@ -104,7 +104,7 @@ class LLChart: UIScrollView {
         
         //每个颜色图表示意思
         for i in 0..<valueStrArr.count{
-            let quertFrame = CGRect(x:Int(self.frame.width - 10 - 8), y:5 + 17 * i, width:12, height:12)
+            let quertFrame = CGRect(x:Int(self.frame.width - 10 - 8), y:17 * i, width:12, height:12)
             let quertLayer = CAShapeLayer.init()
             quertLayer.frame = quertFrame
             quertLayer.backgroundColor = chartColorArr.count != valueArr.count ? UIColor.blue.cgColor:chartColorArr[i].cgColor
